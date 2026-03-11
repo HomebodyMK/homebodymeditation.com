@@ -2,7 +2,7 @@
 
 backend:
   name: github
-  repo: wesdottoday/homebodymeditation.com
+  repo: HomebodyMK/homebodymeditation.com
   branch: main
 
 media_folder: static/images
