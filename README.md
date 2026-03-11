@@ -134,6 +134,56 @@ Both pages support:
 5. Consider adding images to enhance the visual design
 6. Update `baseURL` in `hugo.toml` when you're ready to deploy
 
+## Sveltia CMS
+
+The site includes [Sveltia CMS](https://sveltiacms.app) at `/admin/` for editing pages and writing blog posts with a WYSIWYG editor.
+
+### Setting up GitHub Authentication
+
+Sveltia CMS needs OAuth to authenticate with GitHub and commit changes to your repo. Since the site is deployed with GitHub Pages (no server-side backend), you need an external OAuth provider. The easiest option is to use Sveltia's own free OAuth service.
+
+#### Option A: Sveltia's OAuth Client (recommended)
+
+1. **Register a GitHub OAuth App:**
+   - Go to GitHub → Settings → Developer settings → [OAuth Apps](https://github.com/settings/developers) → "New OAuth App"
+   - **Application name:** `Homebody CMS` (or whatever you like)
+   - **Homepage URL:** `https://homebodymeditation.com`
+   - **Authorization callback URL:** `https://auth.sveltiacms.app/callback`
+   - Click "Register application"
+   - On the next page, note the **Client ID**
+   - Click "Generate a new client secret" and copy the **Client Secret**
+
+2. **Register with Sveltia's OAuth service:**
+   - Go to [auth.sveltiacms.app](https://auth.sveltiacms.app/) and follow the setup instructions
+   - You'll provide your GitHub OAuth Client ID and Client Secret
+   - Sveltia's service acts as the OAuth middleman so you don't need your own server
+
+3. **Update the CMS config** (`static/admin/config.yml`) — no changes needed, the GitHub backend works as-is with Sveltia's OAuth.
+
+4. **Deploy the site** and visit `https://homebodymeditation.com/admin/` — you'll be prompted to log in with GitHub.
+
+#### Option B: Self-hosted OAuth (advanced)
+
+If you prefer not to use Sveltia's hosted service, you can deploy your own OAuth provider:
+
+1. Deploy [netlify-cms-oauth-provider-go](https://github.com/igk1972/netlify-cms-oauth-provider-go) or a similar OAuth proxy to any hosting service (Heroku, Fly.io, etc.)
+2. Register a GitHub OAuth App as above, but set the **Authorization callback URL** to your proxy's callback URL
+3. Add `base_url` to your CMS config backend:
+   ```yaml
+   backend:
+     name: github
+     repo: wesdottoday/homebodymeditation.com
+     branch: main
+     base_url: https://your-oauth-proxy.example.com
+   ```
+
+### Using the CMS
+
+Once authenticated:
+- **Pages** collection: edit the About, Practice, and Connect pages
+- **Writing** collection: create and edit blog posts (published at `/writing/`)
+- The WYSIWYG editor supports headings, bold, italic, links, lists, quotes, images, and raw Markdown mode
+
 ## Deployment
 
 The built site in `/public` can be deployed to:

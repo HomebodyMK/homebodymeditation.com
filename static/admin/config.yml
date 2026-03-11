@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: wesdottoday/homebodymeditation.com
+  branch: main
+
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      - name: about
+        label: About
+        file: content/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Hero Image, name: hero_image, widget: image, required: false }
+          - { label: Subheadline, name: subheadline, widget: string, required: false }
+          - { label: Description, name: description, widget: string, required: false }
+          - { label: Content Image, name: content_image, widget: image, required: false }
+          - { label: Contact Form, name: contact_form, widget: boolean, default: true }
+          - { label: Contact Form CTA Title, name: contact_form_cta_title, widget: string, required: false }
+          - { label: Contact Form CTA Copy, name: contact_form_cta_copy, widget: text, required: false }
+          - { label: Contact Form CTA Button, name: contact_form_cta_button, widget: string, required: false }
+          - label: Guides
+            name: guides
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Content, name: content, widget: text }
+          - { label: Body, name: body, widget: richtext }
+
+      - name: practice
+        label: Practice
+        file: content/practice.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Layout, name: layout, widget: hidden, default: practice }
+          - { label: Hero Image, name: hero_image, widget: image, required: false }
+          - { label: Subheadline, name: subheadline, widget: string, required: false }
+          - { label: Description, name: description, widget: string, required: false }
+          - { label: Contact Form, name: contact_form, widget: boolean, default: true }
+          - { label: Contact Form CTA Title, name: contact_form_cta_title, widget: string, required: false }
+          - { label: Contact Form CTA Copy, name: contact_form_cta_copy, widget: text, required: false }
+          - { label: Contact Form CTA Button, name: contact_form_cta_button, widget: string, required: false }
+          - { label: Intro, name: intro, widget: text, required: false }
+          - label: Offerings
+            name: offerings
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Content, name: content, widget: text }
+          - label: Pricing
+            name: pricing
+            widget: object
+            required: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Content, name: content, widget: markdown }
+
+      - name: connect
+        label: Connect
+        file: content/connect.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Layout, name: layout, widget: hidden, default: connect }
+          - { label: Body, name: body, widget: richtext }
+
+  - name: reflections
+    label: Reflections
+    label_singular: Post
+    folder: content/reflections
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Body, name: body, widget: richtext }

@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{ .Title }}</h1>
+        {{ if .Params.description }}
+        <p class="subheadline">{{ .Params.description }}</p>
+        {{ end }}
+    </div>
+</section>
+
+<!-- Writing List -->
+<section class="content-section writing-list-section">
+    <div class="container">
+        <div class="writing-list">
+            {{ range .Pages.ByDate.Reverse }}
+            <article class="writing-item">
+                <a href="{{ .Permalink }}">
+                    <time class="writing-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                    <h2>{{ .Title }}</h2>
+                    {{ if .Params.description }}
+                    <p class="writing-excerpt">{{ .Params.description }}</p>
+                    {{ else if .Summary }}
+                    <p class="writing-excerpt">{{ .Summary }}</p>
+                    {{ end }}
+                </a>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}
