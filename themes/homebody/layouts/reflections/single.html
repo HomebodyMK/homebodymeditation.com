@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{ .Title }}</h1>
+        <time class="writing-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="content-section page-content-section">
+    <div class="container">
+        <div class="page-content-wrapper writing-content">
+            {{ .Content }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

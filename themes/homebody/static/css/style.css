@@ -1434,3 +1434,99 @@ body.contact-modal-open {
   background-color: var(--deep-espresso);
   opacity: 0.3;
 }
+
+/* ==================== */
+/* WRITING / BLOG       */
+/* ==================== */
+.writing-list-section {
+  background-color: var(--cream-bg);
+}
+
+.writing-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.writing-item {
+  border-bottom: 1px solid var(--soft-clay);
+}
+
+.writing-item:first-child {
+  border-top: 1px solid var(--soft-clay);
+}
+
+.writing-item a {
+  display: block;
+  padding: var(--spacing-lg) 0;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.writing-item a:hover {
+  opacity: 0.7;
+}
+
+.writing-item a:hover h2 {
+  color: var(--ochre-accent);
+}
+
+.writing-item h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--spacing-xs);
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.writing-date {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe-hover);
+  margin-bottom: var(--spacing-xs);
+}
+
+.hero .writing-date {
+  margin-top: var(--spacing-sm);
+  color: var(--deep-espresso);
+  opacity: 0.7;
+}
+
+.writing-excerpt {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-weight: 300;
+  color: var(--deep-espresso);
+}
+
+.writing-content p {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.writing-content h2 {
+  text-align: left;
+  margin-top: var(--spacing-lg);
+}
+
+.writing-content blockquote {
+  border-left: 2px solid var(--soft-clay);
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+}
+
+.writing-content blockquote p {
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .writing-item a {
+    padding: var(--spacing-md) 0;
+  }
+}
